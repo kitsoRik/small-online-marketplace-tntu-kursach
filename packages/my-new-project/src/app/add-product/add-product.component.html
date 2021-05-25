@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup">
+    <div>
+      <label class="label col-sm-3 col-form-label">Product name</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="name" nbInput id="name" placeholder="Name">
+      </div>
+    </div>
+    <div>
+      <label class="label col-sm-3 col-form-label">Product description</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="description" nbInput id="description" placeholder="Description">
+      </div>
+    </div>
+    <div>
+      <label class="label col-sm-3 col-form-label">Product price</label>
+      <div class="col-sm-9">
+        <input formControlName="price" nbInput id="price" placeholder="Price">
+      </div>
+    </div>
+    <br />
+    <div>
+      <div class="offset-sm-3 col-sm-9">
+        <button nbButton status="primary" (click)="onSubmit()">Publish</button>
+      </div>
+    </div>
+  </form>

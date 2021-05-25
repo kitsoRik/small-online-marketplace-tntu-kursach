@@ -1,0 +1,20 @@
+<form [formGroup]="formGroup">
+    <div>
+      <label for="inputEmail1" class="label col-sm-3 col-form-label">Email</label>
+      <div class="col-sm-9">
+        <input type="email" formControlName="email" nbInput id="email" placeholder="Email">
+      </div>
+    </div>
+    <div>
+      <label for="inputPassword2" class="label col-sm-3 col-form-label">Password</label>
+      <div class="col-sm-9">
+        <input type="password" formControlName="password" nbInput id="password" placeholder="Password">
+      </div>
+    </div>
+    <br />
+    <div>
+      <div class="offset-sm-3 col-sm-9">
+        <button nbButton status="primary" (click)="onSubmit()">Login</button>
+      </div>
+    </div>
+  </form>
