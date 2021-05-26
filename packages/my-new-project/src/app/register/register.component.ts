@@ -12,6 +12,7 @@ import { NbToastrService } from '@nebular/theme';
 export class RegisterComponent {
   formGroup = new FormGroup({
     firstName: new FormControl(),
+    lastName: new FormControl(),
     email: new FormControl(),
     password: new FormControl()
   });
@@ -21,10 +22,11 @@ export class RegisterComponent {
 
   onSubmit() {
     console.log(this.formGroup.value);
-    this.httpClient.post('localhost:3000', {}).subscribe(() => {
-      console.log(1);
+    this.httpClient.post('http://localhost:3000/register', {
+      ...this.formGroup.value
+    }).subscribe(() => {
+      this.router.navigateByUrl('/')
+      this.toastrService.show('success', `Registered`, { status: 'success' });
     });
-    this.toastrService.show('success', `Registered`, { status: 'success' });
-    this.router.navigateByUrl('/')
   }
 }

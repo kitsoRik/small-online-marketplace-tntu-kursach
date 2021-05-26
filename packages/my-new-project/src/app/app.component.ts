@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NbMenuItem } from '@nebular/theme';
+import { Router } from '@angular/router';
+import { NbMenuItem, NbToastrService } from '@nebular/theme';
 import { AppService } from './app.service';
 
 @Component({
@@ -11,7 +13,20 @@ export class AppComponent {
 
   items: NbMenuItem[] = [];
 
-  constructor(private appService: AppService) {
+  get user() { return this.appService.user$.getValue() };
+
+  constructor(private appService: AppService, private httpClient: HttpClient, private toastrService: NbToastrService, private router: Router) {
+
+    this.httpClient.post('http://localhost:3000/me', {
+      
+    }, {
+      headers: {
+        'Authorization': this.appService.accessKey || ''
+      }
+    }).subscribe((user) => {
+      this.appService.setUser(user)
+    });
+
     this.appService.user$.subscribe((u: any) => {
 
       

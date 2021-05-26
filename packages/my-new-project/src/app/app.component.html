@@ -1,5 +1,11 @@
 <nb-layout>
-  <nb-layout-header fixed>Company Name</nb-layout-header>
+  <nb-layout-header class="cl" fixed >
+    <div class="cl">
+      Company Name
+    
+    <nb-user *ngIf="user" [name]="user.lastName + ' ' + user.firstName" title="User"></nb-user>
+    </div>
+  </nb-layout-header>
 
   <nb-sidebar><nb-menu [items]="items"></nb-menu> </nb-sidebar>
 

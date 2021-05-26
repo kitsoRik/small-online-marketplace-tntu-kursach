@@ -25,9 +25,9 @@ export class AddProductComponent implements OnInit {
 
   onSubmit() {
     console.log(this.formGroup.value);
-    this.httpClient.post('localhost:3000', {}).subscribe(() => {
+    this.httpClient.post('http://localhost:3000/login', {}).subscribe(() => {
       console.log(1);
+      this.toastrService.show('success', `Logined`, { status: 'success' });
     });
-    this.toastrService.show('success', `Logined`, { status: 'success' });
   }
 }

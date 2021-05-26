@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbMenuModule, NbInputModule, NbToastrModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbMenuModule, NbInputModule, NbToastrModule, NbCardModule, NbUserModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
@@ -37,8 +37,10 @@ import { LogoutComponent } from './logout/logout.component';
     NbInputModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NbToastrModule.forRoot()
-  ],
+    NbToastrModule.forRoot(),
+    NbCardModule,
+    NbUserModule
+  ], 
   providers: [],
   bootstrap: [AppComponent]
 })
