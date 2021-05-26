@@ -2,6 +2,19 @@
     <div>
       <label class="label col-sm-3 col-form-label">Product name</label>
       <div class="col-sm-9">
+        
+            <nb-radio-group formControlName="isActive" >
+              <nb-radio
+                *ngFor="let option of options"
+                [value]="option.value">
+                {{ option.label }}
+              </nb-radio>
+            </nb-radio-group>
+      </div>
+    </div>
+    <div>
+      <label class="label col-sm-3 col-form-label">Product name</label>
+      <div class="col-sm-9">
         <input type="text" formControlName="name" nbInput id="name" placeholder="Name">
       </div>
     </div>

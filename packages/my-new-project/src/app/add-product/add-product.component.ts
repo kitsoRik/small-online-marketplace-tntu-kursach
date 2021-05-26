@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbToastrService } from '@nebular/theme';
 import { AppService } from '../app.service';
@@ -12,10 +12,16 @@ import { AppService } from '../app.service';
 })
 export class AddProductComponent implements OnInit {
   formGroup = new FormGroup({
-    name: new FormControl(),
-    description: new FormControl(),
-    price: new FormControl(),
+    isActive: new FormControl(true),
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.required),
   });
+  
+  options = [
+    { value: true, label: 'Yes' },
+    { value: false, label: 'No' },
+  ];
 
   constructor(private httpClient: HttpClient, private toastrService: NbToastrService, private router: Router, private appService: AppService) { }
 
@@ -24,8 +30,16 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
-    this.httpClient.post('http://localhost:3000/login', {}).subscribe(() => {
+    if(this.formGroup.invalid) return;
+    
+    this.httpClient.post('http://localhost:3000/add-product', {
+      ...this.formGroup.value
+    }, {
+      
+      headers: {
+        'Authorization': this.appService.accessKey || ''
+      }
+    }).subscribe(() => {
       console.log(1);
       this.toastrService.show('success', `Logined`, { status: 'success' });
     });
