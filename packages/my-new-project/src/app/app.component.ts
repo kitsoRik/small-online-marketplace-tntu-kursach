@@ -37,11 +37,12 @@ export class AppComponent {
       result.push({
         title: 'Products',
         children: [{
-          title: 'Search',
-        },{
           title: 'Add',
           link: 'add-product'
-        }],
+        },{
+          title: 'Search',
+          link: 'search'
+        },],
       });
     }
 

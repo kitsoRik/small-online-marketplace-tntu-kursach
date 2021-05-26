@@ -1,0 +1,34 @@
+<div class="search-row">
+    <input type="text" [(ngModel)]="input" nbInput fullWidth placeholder="Full width" style="margin-bottom: 30px">
+    <nb-select placeholder="Field" [(selected)]="selectedField">
+      <nb-option value="name">Sort by name</nb-option>
+      <nb-option value="price">Sort by price</nb-option>
+    </nb-select>
+    <nb-select placeholder="Order" [(selected)]="selectedOrder">
+      <nb-option value="asc">Ascending</nb-option>
+      <nb-option value="desc">Descending</nb-option>
+    </nb-select>
+</div>
+
+        <div class="container">
+            <div *ngFor="let card of cards" class="card">
+
+                <nb-flip-card >
+                    <nb-card-front>
+                      <nb-card size="tiny">
+                        <nb-card-header>{{card.name}}</nb-card-header>
+                        <nb-card-body>
+                            {{card.description}}
+                        </nb-card-body>
+                        <nb-card-footer>Price: {{card.price}}$</nb-card-footer>
+                      </nb-card>
+                    </nb-card-front>
+                    <nb-card-back>
+                      <nb-card size="tiny">
+                        <nb-card-header>{{card.owner.firstName + ' ' + card.owner.lastName}}</nb-card-header>
+
+                      </nb-card>
+                    </nb-card-back>
+                  </nb-flip-card>
+            </div>
+        </div>

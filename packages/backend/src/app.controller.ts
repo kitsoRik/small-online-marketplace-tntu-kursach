@@ -1,8 +1,8 @@
-import { BadRequestException, Body, Controller, Get, Headers, HttpException, Post, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Headers, HttpException, Post, Query, UnauthorizedException } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserEntity } from './entities/user.entity';;
 import { sha256 } from 'crypto-hash'
-import { getRepository } from 'typeorm';
+import { getRepository, ILike } from 'typeorm';
 import { UserSessionEntity } from './entities/user-session.entity';
 
 import * as crypto from 'crypto';
@@ -84,5 +84,23 @@ export class AppController {
     await getRepository(ProductEntity).save(product);
 
     return product;
+  }
+
+  @Get("/products/search")
+  async search(@Query("input") input: string, @Query("sortField") sortField: string, @Query("sortOrder") sortOrder: string) {
+    const products = await getRepository(ProductEntity).find({
+      where: {
+        isActive: true,
+        name: ILike(`%${input}%`)
+      },
+      relations: ['owner'],
+      order: {
+        [sortField]: sortOrder.toUpperCase()
+      }
+    });
+console.log({
+  [sortField]: sortOrder
+});
+    return products;
   }
 }
