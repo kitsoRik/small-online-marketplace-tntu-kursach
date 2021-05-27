@@ -151,13 +151,34 @@ export class AppController {
   }
 
   @Get("/my-products")
-  async myPooduct(@Param("id") id: number, @Query("sortField") sortField?: string, @Query("sortOrder") sortOrder?: string) {
-    const product = await getRepository(ProductEntity).find({
+  async myPooduct(@Headers("authorization") authorization: string, @Query("sortField") sortField?: string, @Query("sortOrder") sortOrder?: string) {
+    const user = await this.appService.getUserByAccessKey(authorization);
+    const products = await getRepository(ProductEntity).find({
       order: {
         [sortField]: sortOrder
       }
     });
 
-    return product;
+    return products;
+  }
+
+  @Get("/my-orders")
+  async myOrders(@Headers("authorization") authorization: string) {
+    const user = await this.appService.getUserByAccessKey(authorization);
+
+    const orders = await getRepository(OrderEntity).find({
+      where: {
+        user: {
+          id: user.id
+        }
+      },
+      relations: ['product'],
+     order: {
+       date: 'DESC'
+     }
+    });
+
+
+    return orders;
   }
 }

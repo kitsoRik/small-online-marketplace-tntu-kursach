@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { ProductEntity } from "./product.entity";
 import { UserEntity } from "./user.entity";
 
@@ -16,10 +16,12 @@ export class OrderEntity {
     @Column({ type: 'timestamp without time zone' })
     date: Date;
 
-    @ManyToMany(() => UserEntity)
+    @ManyToOne(() => UserEntity)
+    @JoinColumn({ name: 'fk_user_id' })
     user: UserEntity;
 
-    @ManyToMany(() => ProductEntity)
+    @ManyToOne(() => ProductEntity)
+    @JoinColumn({ name: 'fk_product_id' })
     product: ProductEntity;
 
 }
