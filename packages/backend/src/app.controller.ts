@@ -7,6 +7,7 @@ import { UserSessionEntity } from './entities/user-session.entity';
 
 import * as crypto from 'crypto';
 import { ProductEntity } from './entities/product.entity';
+import { OrderEntity } from './entities/order.entity';
 
 @Controller()
 export class AppController {
@@ -128,11 +129,32 @@ export class AppController {
     return product;
   }
 
+  @Post("/products/:id/buy")
+  async buyProduct(@Param("id") id: number, @Headers("authorization") authorization: string, @Body("deliveryAddress") deliveryAddress: string, @Body("message") message: string) {
+    const user = await this.appService.getUserByAccessKey(authorization);
+
+    const product = await getRepository(ProductEntity).findOne(id);
+
+
+    const order = new OrderEntity();
+
+    order.product = product;
+    order.user = user;
+    order.message = message;
+    order.deliveryAddress = deliveryAddress;
+    order.product = product;
+    order.date = new Date();
+
+    await getRepository(OrderEntity).save(order);
+
+    return order;
+  }
+
   @Get("/my-products")
-  async myPooduct(@Param("id") id: number, @Query("sortField") sortField?: string,) {
+  async myPooduct(@Param("id") id: number, @Query("sortField") sortField?: string, @Query("sortOrder") sortOrder?: string) {
     const product = await getRepository(ProductEntity).find({
       order: {
-        [sortField]: 'ASC'
+        [sortField]: sortOrder
       }
     });
 

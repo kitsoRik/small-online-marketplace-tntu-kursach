@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbMenuModule, NbInputModule, NbToastrModule, NbCardModule, NbUserModule, NbRadioModule, NbSelectModule, NbCheckboxModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbMenuModule, NbInputModule, NbToastrModule, NbCardModule, NbUserModule, NbRadioModule, NbSelectModule, NbCheckboxModule, NbDialogModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
@@ -52,7 +52,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NbSelectModule,
     NgxDatatableModule,
     BrowserModule,
-    NbCheckboxModule
+    NbCheckboxModule,
+    NbDialogModule.forRoot()
   ], 
   providers: [],
   bootstrap: [AppComponent]

@@ -4,5 +4,35 @@
     <span>Description: {{ product?.description }}</span>
     <br />
     <br />
-    <button nbButton status="primary">Buy</button>
+    <button nbButton (click)="open(dialog)" status="primary">Buy</button>
 </div>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card>
+      <nb-card-header>Fill your info</nb-card-header>
+      <nb-card-body>
+        <form [formGroup]="formGroup">
+            <div>
+              <label class="label col-sm-3 col-form-label">Delivery addreess</label>
+              <div class="col-sm-9">
+                <input type="text" formControlName="deliveryAddress" nbInput id="name" placeholder="Ruska Street, Ternopil, Ukraine">
+              </div>
+            </div>
+            <br />
+            <div>
+              <label class="label col-sm-3 col-form-label">Message</label>
+              <div class="col-sm-9">
+                <input type="text" formControlName="message" nbInput id="name" placeholder="Your message">
+              </div>
+            </div>
+            <div>
+            </div>
+          </form>
+
+      </nb-card-body>
+      <nb-card-footer>
+        <button nbButton (click)="ref.close()">Cancel</button>
+          <button nbButton status="primary" (click)="onBuy(dialog)">Buy</button>
+      </nb-card-footer>
+    </nb-card>
+  </ng-template>
