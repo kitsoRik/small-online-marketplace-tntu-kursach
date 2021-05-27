@@ -6,11 +6,11 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 import { AppService } from '../app.service';
 
 @Component({
-  selector: 'app-my-products',
-  templateUrl: './my-products.component.html',
-  styleUrls: ['./my-products.component.scss']
+  selector: 'app-my-orders',
+  templateUrl: './my-orders.component.html',
+  styleUrls: ['./my-orders.component.scss']
 })
-export class MyProductsComponent {
+export class MyOrdersComponent {
 
   cards: any;
   expanded = {};
@@ -18,13 +18,13 @@ export class MyProductsComponent {
 
   ColumnMode = ColumnMode;
 
-  constructor(private appService: AppService, private httpClient: HttpClient, private toastrService: NbToastrService, private router: Router, private activated: ActivatedRoute) {
+  constructor(private appService: AppService,  private httpClient: HttpClient, private toastrService: NbToastrService, private router: Router, private activated: ActivatedRoute) {
     this.find('name', 'ASC');
     }
 
 
     find(sortBy: string, sortOrder: string) {
-      this.httpClient.get(`http://localhost:3000/my-products?sortField=${sortBy}&sortOrder=${sortOrder}`, {
+      this.httpClient.get(`http://localhost:3000/my-orders`, {
         headers: {
           'Authorization': this.appService.accessKey || ''
         }
@@ -44,13 +44,4 @@ export class MyProductsComponent {
     }, 100);
   }
 
-  getRowHeight(row: any) {
-    return 100;
-  }
-
-  changeCell(rowId: number, columnName: string, event: any) {
-    this.httpClient.patch(`http://localhost:3000/products/${rowId}`, { [columnName]: typeof event === 'object' ? event.target.value : event }).subscribe((result: any) => {
-       
-     });
-  }
 }

@@ -37,7 +37,7 @@ export class ProductComponent{
         'Authorization': this.appService.accessKey || ''
       }
     }).subscribe((result: any) => {
-      
+      this.router.navigateByUrl(`/my-orders`)
     });
     this.buyDialog.close();
   }

@@ -1,0 +1,38 @@
+<div *ngIf="cards" style="display: flex; flex-direction: column;">
+    <h3>
+      My products
+    </h3>
+    <ngx-datatable
+      class="material" style="flex: 1"
+      [rows]="cards"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="50"
+      [scrollbarV]="true"
+      [externalSorting]="true"
+      (page)="onPage($event)"
+      (sort)="onSort($event)"
+    >
+    <ngx-datatable-column [sortable]="true" name="deliveryAddress" [width]="300">
+      <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+        <strong>{{ value }}</strong>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [sortable]="true" name="message" [width]="300">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <strong>{{ value }}</strong>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [sortable]="true" name="date" [width]="300">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <strong>{{ value | date:'medium' }}</strong>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [sortable]="true" name="productName" [width]="300">
+      <ng-template let-row="row"  ngx-datatable-cell-template>
+        <a [routerLink]="'/products/' + row.product.id">{{ row.product.name }}</a>
+      </ng-template>
+    </ngx-datatable-column>
+    </ngx-datatable>
+  </div>

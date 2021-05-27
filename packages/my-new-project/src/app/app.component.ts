@@ -61,6 +61,22 @@ export class AppComponent {
 
     result.push(products);
 
+    if(u) {
+      result.push({
+        title: 'Orders',
+        children: [
+          {
+            title: 'My orders',
+            link: 'my-orders'
+          },
+          {
+            title: 'My sells',
+            link: 'my-sells'
+          }
+        ]
+      });
+    }
+
       this.items = result;
     })
   }
