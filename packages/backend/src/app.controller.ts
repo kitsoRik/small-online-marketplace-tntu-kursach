@@ -181,4 +181,15 @@ export class AppController {
 
     return orders;
   }
+
+  @Get("/my-sells")
+  async mySells(@Headers("authorization") authorization: string) {
+    const user = await this.appService.getUserByAccessKey(authorization);
+
+    const orders = await getRepository(OrderEntity).createQueryBuilder("order").leftJoinAndSelect("order.product", 'product').leftJoinAndSelect("product.owner", "owner").where("owner.id = :ownerId", { ownerId: user.id }).orderBy({ date: 'ASC' }).getMany();
+    
+
+
+    return orders;
+  }
 }

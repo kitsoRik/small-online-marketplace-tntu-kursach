@@ -18,6 +18,7 @@ import { ProductComponent } from './product/product.component';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { MySellsComponent } from './my-sells/my-sells.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     SearchProductsComponent,
     ProductComponent,
     MyProductsComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    MySellsComponent
   ],
   imports: [
     BrowserModule,
