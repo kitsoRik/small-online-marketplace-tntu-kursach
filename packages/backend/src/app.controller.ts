@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Headers, HttpException, Post, Query, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Headers, HttpException, Param, Post, Query, UnauthorizedException } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserEntity } from './entities/user.entity';;
 import { sha256 } from 'crypto-hash'
@@ -98,9 +98,14 @@ export class AppController {
         [sortField]: sortOrder.toUpperCase()
       }
     });
-console.log({
-  [sortField]: sortOrder
-});
+
     return products;
+  }
+
+  @Get("/products/:id")
+  async product(@Param("id") id: number) {
+    const product = await getRepository(ProductEntity).findOne(id);
+
+    return product;
   }
 }

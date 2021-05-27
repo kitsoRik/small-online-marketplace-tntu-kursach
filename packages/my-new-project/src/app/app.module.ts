@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { SearchProductsComponent } from './search-products/search-products.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchProductsComponent } from './search-products/search-products.compo
     RegisterComponent,
     LoginComponent,
     LogoutComponent,
-    SearchProductsComponent
+    SearchProductsComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
