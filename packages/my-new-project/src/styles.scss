@@ -1,5 +1,6 @@
 @import 'themes';
-
+@import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.css';
 @import '~@nebular/theme/styles/globals';
 
 @include nb-install() {

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbMenuModule, NbInputModule, NbToastrModule, NbCardModule, NbUserModule, NbRadioModule, NbSelectModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbButtonModule, NbMenuModule, NbInputModule, NbToastrModule, NbCardModule, NbUserModule, NbRadioModule, NbSelectModule, NbCheckboxModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { RouterModule } from '@angular/router';
 import { AddProductComponent } from './add-product/add-product.component';
@@ -15,6 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { SearchProductsComponent } from './search-products/search-products.component';
 import { ProductComponent } from './product/product.component';
+import { MyProductsComponent } from './my-products/my-products.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { ProductComponent } from './product/product.component';
     LoginComponent,
     LogoutComponent,
     SearchProductsComponent,
-    ProductComponent
+    ProductComponent,
+    MyProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,10 @@ import { ProductComponent } from './product/product.component';
     NbCardModule,
     NbUserModule,
     NbRadioModule,
-    NbSelectModule
+    NbSelectModule,
+    NgxDatatableModule,
+    BrowserModule,
+    NbCheckboxModule
   ], 
   providers: [],
   bootstrap: [AppComponent]

@@ -32,19 +32,34 @@ export class AppComponent {
       
     const result: NbMenuItem[] = [this.buildUserMenuItem(u)]; 
 
+    const products: any = {
+      title: 'Products',
+      children: [],
+    };
+
       if(u) {
         
-      result.push({
-        title: 'Products',
-        children: [{
-          title: 'Add',
-          link: 'add-product'
-        },{
-          title: 'Search',
-          link: 'search'
-        },],
+        products.children.push(
+          {
+            title: 'Add',
+            link: 'add-product'
+          }
+        )
+    }
+
+    products.children.push({
+      title: 'Search',
+      link: 'search'
+    })
+
+    if(u) {
+      products.children.push({
+        title: 'My products',
+        link: 'my-products'
       });
     }
+
+    result.push(products);
 
       this.items = result;
     })

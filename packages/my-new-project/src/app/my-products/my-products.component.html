@@ -1,0 +1,38 @@
+<div *ngIf="cards" style="display: flex; flex-direction: column;">
+    <h3>
+      My products
+    </h3>
+    <ngx-datatable
+      class="material" style="flex: 1"
+      [rows]="cards"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="70"
+      [scrollbarV]="true"
+      [externalSorting]="true"
+      (page)="onPage($event)"
+      (sort)="onSort($event)"
+    >
+    <ngx-datatable-column [sortable]="true" name="id" [width]="300">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <strong>{{ value }}</strong>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [sortable]="true" name="name" [width]="300">
+      <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+        <input nbInput [value]="row.name" (change)="changeCell(row.id, 'name', $event)" />
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [sortable]="true" name="price" [width]="300">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <input nbInput [value]="row.price" (change)="changeCell(row.id, 'price', $event)" />
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column [sortable]="true" name="isActive" [width]="300">
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        <nb-checkbox [checked]="row.isActive" (checkedChange)="changeCell(row.id, 'isActive', $event)">Is active</nb-checkbox>
+      </ng-template>
+    </ngx-datatable-column>
+    </ngx-datatable>
+  </div>

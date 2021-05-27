@@ -21,6 +21,7 @@
     "@angular/router": "~12.0.1",
     "@nebular/eva-icons": "7.0.0",
     "@nebular/theme": "^7.0.0",
+    "@swimlane/ngx-datatable": "^19.0.0",
     "eva-icons": "^1.1.2",
     "lodash": "^4.17.21",
     "rxjs": "~6.6.0",

@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Headers, HttpException, Param, Post, Query, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Headers, HttpException, Param, Patch, Post, Query, UnauthorizedException } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserEntity } from './entities/user.entity';;
 import { sha256 } from 'crypto-hash'
@@ -105,6 +105,36 @@ export class AppController {
   @Get("/products/:id")
   async product(@Param("id") id: number) {
     const product = await getRepository(ProductEntity).findOne(id);
+
+    return product;
+  }
+
+  @Patch("/products/:id")
+  async editProduce(@Param("id") id: number, @Body("price") price?: string, @Body("name") name?: string, @Body("isActive") isActive?: boolean) {
+    const product = await getRepository(ProductEntity).findOne(id);
+
+    if(price) {
+      product.price = parseFloat(price); 
+      }
+      if(name !== undefined) {
+        product.name = name; 
+        }
+        if(isActive !== undefined) {
+          product.isActive = isActive; 
+          }
+
+    await getRepository(ProductEntity).save(product);
+
+    return product;
+  }
+
+  @Get("/my-products")
+  async myPooduct(@Param("id") id: number, @Query("sortField") sortField?: string,) {
+    const product = await getRepository(ProductEntity).find({
+      order: {
+        [sortField]: 'ASC'
+      }
+    });
 
     return product;
   }
