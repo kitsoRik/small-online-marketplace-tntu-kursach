@@ -29,6 +29,15 @@ export class ProductComponent{
     this.buyDialog = this.dialogService.open(dialog, { context: 'this is some additional data passed to dialog' });
   }
 
+  onClickBuy(dialog: any) {
+    
+    if(!this.appService.user$.getValue()) {
+      this.router.navigateByUrl("/login");
+    } else {
+      this.open(dialog);
+    }
+  }
+
   onBuy(dialog: TemplateRef<any>) {
     this.httpClient.post(`http://localhost:3000/products/${this.product.id}/buy`, {
       ...this.formGroup.value
@@ -40,5 +49,6 @@ export class ProductComponent{
       this.router.navigateByUrl(`/my-orders`)
     });
     this.buyDialog.close();
+      
   }
 }
