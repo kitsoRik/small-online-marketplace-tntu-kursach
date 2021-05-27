@@ -24,11 +24,18 @@ export class LoginComponent{
   onSubmit() {
     this.httpClient.post('http://localhost:3000/login', {
       ...this.formGroup.value
-    }).subscribe(({ accessKey, ...user }: any) => {
-      this.appService.accessKey = accessKey;
-      this.toastrService.show('success', `Logined`, { status: 'success' });
-      this.router.navigateByUrl('/')
-      this.appService.setUser(user)
-    });
+    }).subscribe({
+      next: ({ accessKey, ...user }: any) => {
+        this.appService.accessKey = accessKey;
+        this.toastrService.show('success', `Logined`, { status: 'success' });
+        this.router.navigateByUrl('/')
+        this.appService.setUser(user)
+        
+    }
+    ,error: () => {
+      this.toastrService.show('danger', `Unknown data`, { status: 'danger' });
+    }
+  },
+    );
   }
 }
