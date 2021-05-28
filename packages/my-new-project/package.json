@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:prod": "serve dist/my-new-project -s -l 8080"
   },
   "private": true,
   "dependencies": {
@@ -22,7 +23,7 @@
     "@nebular/eva-icons": "7.0.0",
     "@nebular/theme": "^7.0.0",
     "@swimlane/ngx-datatable": "^19.0.0",
-    "eva-icons": "^1.1.2",
+    "eva-icons": "^1.1.2", 
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "rxjs": "~6.6.0",
@@ -43,6 +44,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "serve": "^11.3.2",
     "typescript": "~4.2.3"
   }
 }
