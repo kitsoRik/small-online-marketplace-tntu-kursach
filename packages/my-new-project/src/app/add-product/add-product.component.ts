@@ -40,8 +40,7 @@ export class AddProductComponent implements OnInit {
         'Authorization': this.appService.accessKey || ''
       }
     }).subscribe(() => {
-      console.log(1);
-      this.toastrService.show('success', `Logined`, { status: 'success' });
+      this.toastrService.show('Product added successfully', `Product added`, { status: 'success' });
     });
   }
 }

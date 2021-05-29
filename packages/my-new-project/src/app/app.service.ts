@@ -20,5 +20,9 @@ export class AppService {
 
   setUser(data: any) {
     this.user$.next(data);
+
+    if(!data) {
+      this.accessKey = null;
+    }
   }
 }

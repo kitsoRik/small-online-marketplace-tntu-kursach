@@ -27,13 +27,13 @@ export class LoginComponent{
     }).subscribe({
       next: ({ accessKey, ...user }: any) => {
         this.appService.accessKey = accessKey;
-        this.toastrService.show('success', `Logined`, { status: 'success' });
+        this.toastrService.show(`Hi ${user.firstName}`, `Logined`, { status: 'success' });
         this.router.navigateByUrl('/')
         this.appService.setUser(user)
         
     }
     ,error: () => {
-      this.toastrService.show('danger', `Unknown data`, { status: 'danger' });
+      this.toastrService.show('Email or password is invalid', `Unknown data`, { status: 'danger' });
     }
   },
     );

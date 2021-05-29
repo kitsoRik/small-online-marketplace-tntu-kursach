@@ -26,7 +26,7 @@ export class RegisterComponent {
       ...this.formGroup.value
     }).subscribe(() => {
       this.router.navigateByUrl('/')
-      this.toastrService.show('success', `Registered`, { status: 'success' });
+      this.toastrService.show('Now you can login', `Registered`, { status: 'success' });
     });
   }
 }
