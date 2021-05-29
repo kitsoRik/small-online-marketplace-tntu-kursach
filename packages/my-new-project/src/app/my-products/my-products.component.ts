@@ -24,7 +24,7 @@ export class MyProductsComponent {
 
 
     find(sortBy: string, sortOrder: string) {
-      this.httpClient.get(`http://localhost:3000/my-products?sortField=${sortBy}&sortOrder=${sortOrder}`, {
+      this.httpClient.get(`https://api.tntu.rostik.link/my-products?sortField=${sortBy}&sortOrder=${sortOrder}`, {
         headers: {
           'Authorization': this.appService.accessKey || ''
         }
@@ -49,7 +49,7 @@ export class MyProductsComponent {
   }
 
   changeCell(rowId: number, columnName: string, event: any) {
-    this.httpClient.patch(`http://localhost:3000/products/${rowId}`, { [columnName]: typeof event === 'object' ? event.target.value : event }).subscribe((result: any) => {
+    this.httpClient.patch(`https://api.tntu.rostik.link/products/${rowId}`, { [columnName]: typeof event === 'object' ? event.target.value : event }).subscribe((result: any) => {
        
      });
   }

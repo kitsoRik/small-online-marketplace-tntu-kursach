@@ -32,7 +32,7 @@ export class AddProductComponent implements OnInit {
   onSubmit() {
     if(this.formGroup.invalid) return;
     
-    this.httpClient.post('http://localhost:3000/add-product', {
+    this.httpClient.post('https://api.tntu.rostik.link/add-product', {
       ...this.formGroup.value
     }, {
       

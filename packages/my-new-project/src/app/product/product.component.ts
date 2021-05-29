@@ -19,7 +19,7 @@ export class ProductComponent{
 
   constructor(private dialogService: NbDialogService, private appService: AppService, private httpClient: HttpClient, private toastrService: NbToastrService, private router: Router, private activated: ActivatedRoute) {
    activated.params.subscribe(({ id }) => {
-    this.httpClient.get(`http://localhost:3000/products/${id}`).subscribe((result: any) => {
+    this.httpClient.get(`https://api.tntu.rostik.link/products/${id}`).subscribe((result: any) => {
       this.product = result;
     });
     });
@@ -39,7 +39,7 @@ export class ProductComponent{
   }
 
   onBuy(dialog: TemplateRef<any>) {
-    this.httpClient.post(`http://localhost:3000/products/${this.product.id}/buy`, {
+    this.httpClient.post(`https://api.tntu.rostik.link/products/${this.product.id}/buy`, {
       ...this.formGroup.value
     }, {
       headers: {

@@ -22,7 +22,7 @@ export class LoginComponent{
 
 
   onSubmit() {
-    this.httpClient.post('http://localhost:3000/login', {
+    this.httpClient.post('https://api.tntu.rostik.link/login', {
       ...this.formGroup.value
     }).subscribe({
       next: ({ accessKey, ...user }: any) => {

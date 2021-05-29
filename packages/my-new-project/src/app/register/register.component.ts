@@ -22,7 +22,7 @@ export class RegisterComponent {
 
   onSubmit() {
     console.log(this.formGroup.value);
-    this.httpClient.post('http://localhost:3000/register', {
+    this.httpClient.post('https://api.tntu.rostik.link/register', {
       ...this.formGroup.value
     }).subscribe(() => {
       this.router.navigateByUrl('/')

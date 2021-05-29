@@ -24,7 +24,7 @@ export class MyOrdersComponent {
 
 
     find(sortBy: string, sortOrder: string) {
-      this.httpClient.get(`http://localhost:3000/my-orders`, {
+      this.httpClient.get(`https://api.tntu.rostik.link/my-orders`, {
         headers: {
           'Authorization': this.appService.accessKey || ''
         }

@@ -30,7 +30,7 @@ export class SearchProductsComponent {
   constructor(private httpClient: HttpClient, private toastrService: NbToastrService, private router: Router) {this.find(); }
 
   find = _.debounce(() => {
-    this.httpClient.get(`http://localhost:3000/products/search?input=${this._input}&sortField=${this._selectedField}&sortOrder=${this._selectedOrder}`).subscribe((result: any) => {
+    this.httpClient.get(`https://api.tntu.rostik.link/products/search?input=${this._input}&sortField=${this._selectedField}&sortOrder=${this._selectedOrder}`).subscribe((result: any) => {
       this.cards = result;
     });
   }, 400);

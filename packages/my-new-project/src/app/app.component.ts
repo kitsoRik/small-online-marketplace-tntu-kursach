@@ -17,7 +17,7 @@ export class AppComponent {
 
   constructor(private appService: AppService, private httpClient: HttpClient, private toastrService: NbToastrService, private router: Router) {
 
-    this.httpClient.post('http://localhost:3000/me', {
+    this.httpClient.post('https://api.tntu.rostik.link/me', {
       
     }, {
       headers: {
